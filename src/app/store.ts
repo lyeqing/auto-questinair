@@ -4,10 +4,14 @@ import {
   ThunkAction,
 } from '@reduxjs/toolkit';
 import counterReducer from '../features/counter/counterSlice';
+import kanyeReducer from '../features/kanye/kanyeSlice';
+import typeListReducer from '../features/typeList/typeListSlice';
 
 export const store = configureStore({
   reducer: {
      counter: counterReducer,
+     kanyeQuote: kanyeReducer,
+     typeList:typeListReducer,
   },
 });
 

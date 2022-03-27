@@ -1,17 +1,15 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import Image from 'next/image';
+import { useAppDispatch, useAppSelector } from '../app/hooks';
 import { ElementButton } from '../components/elementButton';
+import { selectTypeList } from '../features/typeList/typeListSlice';
 //import styles from '../styles/Home.module.css';
 
 const Home: NextPage = () => {
-  const elementList: string[] = [
-    '5 star selection',
-    'Short text answer',
-    'Single choice',
-    'Multi choice',
-  ];
-  const elementDisplay: JSX.Element[] = elementList.map((e) => (
+  const dispatch = useAppDispatch();
+  const typeList = useAppSelector(selectTypeList);
+  const elementDisplay: JSX.Element[] = typeList.map((e) => (
     <ElementButton key={e} fileName={e} />
   ));
   return (

@@ -4,14 +4,19 @@ import Image from 'next/image';
 import { useAppDispatch, useAppSelector } from '../app/hooks';
 import { ElementButton } from '../components/elementButton';
 import { LayoutMain } from '../components/layout/layoutMain';
+import { questionaire } from '../features/questionaire/questionaireSlice';
 import { selectTypeList } from '../features/typeList/typeListSlice';
 //import styles from '../styles/Home.module.css';
 
 const Home: NextPage = () => {
   const dispatch = useAppDispatch();
   const typeList = useAppSelector(selectTypeList);
+  const Questionaire = useAppSelector(questionaire);
   const elementDisplay: JSX.Element[] = typeList.map((e) => (
     <ElementButton key={e} fileName={e} />
+  ));
+  const elementDisplay1: JSX.Element[] = Questionaire.map((e) => (
+    <ElementButton key={e.type} fileName={e.type} />
   ));
   return (
     <main className="bg-gray-100 dark:bg-gray-800 h-screen ">
@@ -27,6 +32,7 @@ const Home: NextPage = () => {
             <h1 className="w-full text-center font-serif text-3xl mt-4">
               Questionaire
             </h1>
+            {elementDisplay1}
           </div>
           <div className=" h-screen bg-amber-200">
             <h1 className="w-full text-center font-serif text-3xl mt-4">

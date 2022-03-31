@@ -4,8 +4,6 @@ export type TypeListInsertValue = {
 };
 
 export type Question = {
-  value: string;
-  index: number;
   type:string;
   body:string;
   answer:string[];

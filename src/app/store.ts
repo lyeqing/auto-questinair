@@ -1,3 +1,4 @@
+import { indexSlice } from './../features/index/indexSlice';
 import { questionaire } from './../features/questionaire/questionaireSlice';
 import {
   Action,
@@ -8,13 +9,15 @@ import counterReducer from '../features/counter/counterSlice';
 import kanyeReducer from '../features/kanye/kanyeSlice';
 import typeListReducer from '../features/typeList/typeListSlice';
 import questionaireReducer from '../features/questionaire/questionaireSlice';
+import indexReducer from '../features/index/indexSlice';
 
 export const store = configureStore({
   reducer: {
      counter: counterReducer,
      kanyeQuote: kanyeReducer,
      typeList:typeListReducer,
-     questionaire: questionaireReducer
+     questionaire: questionaireReducer,
+     index: indexReducer,
   },
 });
 

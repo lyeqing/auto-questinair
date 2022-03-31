@@ -4,6 +4,8 @@ import Image from 'next/image';
 import { useAppDispatch, useAppSelector } from '../app/hooks';
 import { ElementButton } from '../components/elementButton';
 import { LayoutMain } from '../components/layout/layoutMain';
+import { QuestionElement } from '../components/questionElement';
+import { selectIndex } from '../features/index/indexSlice';
 import { questionaire } from '../features/questionaire/questionaireSlice';
 import { selectTypeList } from '../features/typeList/typeListSlice';
 //import styles from '../styles/Home.module.css';
@@ -15,9 +17,21 @@ const Home: NextPage = () => {
   const elementDisplay: JSX.Element[] = typeList.map((e) => (
     <ElementButton key={e} fileName={e} />
   ));
-  const elementDisplay1: JSX.Element[] = Questionaire.map((e) => (
-    <ElementButton key={e.type} fileName={e.type} />
+  const elementDisplay1: JSX.Element[] = Questionaire.map((e, i) => (
+    <QuestionElement
+      key={e.type}
+      question={{
+        type: '',
+        body: '',
+        answer: [],
+      }}
+      index={i}
+    />
   ));
+  const index = useAppSelector(selectIndex);
+  setTimeout(() => {
+    document.getElementById('question' + index)?.focus();
+  }, 200);
   return (
     <main className="bg-gray-100 dark:bg-gray-800 h-screen ">
       <LayoutMain token={''} imageUrl={''}>

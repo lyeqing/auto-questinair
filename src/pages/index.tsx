@@ -1,10 +1,12 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import Image from 'next/image';
+import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../app/hooks';
 import { ElementButton } from '../components/elementButton';
 import { LayoutMain } from '../components/layout/layoutMain';
 import { QuestionElement } from '../components/questionElement';
+import { QuestionProperty } from '../components/questionProperty';
 import { selectIndex } from '../features/index/indexSlice';
 import { questionaire } from '../features/questionaire/questionaireSlice';
 import { selectTypeList } from '../features/typeList/typeListSlice';
@@ -28,10 +30,15 @@ const Home: NextPage = () => {
       index={i}
     />
   ));
+
   const index = useAppSelector(selectIndex);
-  setTimeout(() => {
+  useEffect(() => {
     document.getElementById('question' + index)?.focus();
-  }, 200);
+  }, [index]);
+
+  // setTimeout(() => {
+  //   document.getElementById('question' + index)?.focus();
+  // }, 200);
   return (
     <main className="bg-gray-100 dark:bg-gray-800 h-screen ">
       <LayoutMain token={''} imageUrl={''}>
@@ -52,6 +59,7 @@ const Home: NextPage = () => {
             <h1 className="w-full text-center font-serif text-3xl mt-4">
               Contents
             </h1>
+            <QuestionProperty />
           </div>
         </div>
       </LayoutMain>

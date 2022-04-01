@@ -9,7 +9,7 @@ export type IndexState = {
 };
 
 const initialState: IndexState = {
-  value: 0
+  value: -1
 };
 
 export const indexSlice = createSlice({
